@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+}
+header h1{
+    background-color: rosybrown;
+}
+header nav{
+}
+header nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+header nav ul li{
+    width: 25%;
+}
+header nav ul li a{
+    display: block;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #fff;
+    background-image: linear-gradient(to bottom, #9c9, #363 );
+}
+
+header nav p {
+    display: none;
+}
+#keyvisual{
+    background-image: url(../img/keyvisual.jpg);
+    background-repeat: no-repeat;
+    padding-top: 25.93%;
+    background-size: contain;
+}
+
+#container{
+    display: flex;
+    flex-wrap: wrap;
+}
+#container #wrap{
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+#container #wrap main{
+    width: 100%;
+    background-color: #99f;
+}
+#container #wrap main article{
+}
+#container #wrap main article section{
+    border: 1px solid #fff;
+}
+#container #wrap main article aside{
+}
+#container #wrap div{
+    width: 50%;
+    background-color: #9c9;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+}
+#container #sub{
+    width: 25%;
+    background-color: #c99;
+}
+
+footer{
+    background-color: #ccc;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media screen and (max-width:768px) {
+    header nav ul li{
+        width: 50%;
+    }
+    #container #wrap{
+        width: 100%;
+    }
+    #container #sub{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:480px) {
+    header{
+        display: flex;
+        position: relative;
+    }
+    header h1{
+        width: 50%;
+    }
+    header nav{
+        width: 50%;
+    }
+    header nav p {
+        display: block;
+        text-align: right;
+    }
+    header nav ul {
+        position: absolute;
+        width: 100%;
+        top: 50px;
+        left: 0;
+    }
+    header nav ul li{
+        height: 0;
+        overflow: hidden;
+        transition: all 800ms ease 200ms;
+    }
+    header nav.open ul li{
+        height: 56px;
+    }
+    header nav ul li {
+        width: 100%;
+    }
+    #container #wrap div{
+        width: 100%;
+    }
+}
