@@ -1,0 +1,451 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+
+body {
+  color: #333;
+  font-size: 1rem;
+  font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+}
+/* colorは黒
+  フォントのサイズを1rem
+  フォント変更 */
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+/* 色は黒色で統一する
+  テキストの下線を消す */
+
+img {
+  max-width: 100%;
+}
+/* 画像のサイズ指定 */
+
+.li {
+  list-style: none;
+}
+/* list-style?? */
+
+/* コンテンツ幅を設定するための共通クラス */
+
+.wrapper {
+  max-width: 1200px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+/* 最大1200の幅
+  脂肪横だけ
+  真ん中 */
+
+.readmore {
+  font-size: 0.875rem;
+  text-align: center;
+}
+/* readmoreを真ん中に */
+
+/* 疑似要素で下線を設定するために、[position:relative]を設定 */
+
+.readmore a {
+  padding-bottom: 1px;
+  color: #333;
+  position: relative;
+}
+
+/*「position: absolute;」を設定し、left、bottomで下線の位置を調整
+widthとheightで線の長さと高さを設定
+疑似要素で線を表示させるためには、「content: '';」を設定すること
+「transition: all 200ms ease;」でホバー時の速度などを設定*/
+
+/* 下線の幅
+下線を消す */
+
+.readmore a::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  bottom: 0%;
+  background: #333;
+  transition: all 200ms ease;
+}
+/*ホバー時の下線の設定
+「opacity: 0;」下線を非表示
+「transform: translateY(3px);」下に3px移動
+→下に3px移動しながら下線を非表示にする*/
+
+.readmore a:hover::after {
+  opacity: 0;
+  transform: translateY(3px);
+}
+
+/*-------------------------------------------
+header
+-------------------------------------------*/
+/*
+「position: fixed;」でヘッダーを固定し、「z-index: 10;」で前面に表示
+※他のコンテンツでpositionをrelative、absolute、fixedのいずれかに
+設定している場合は、z-indexの数値が大きい方が前面に表示される*/
+
+#header {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  z-index: 10;
+}
+/* withd100%で最大
+カラーは白
+position、fixedでheaderを常に表示 */
+
+#header .site-title {
+  padding: 20px 16px;
+  line-height: 1px;
+}
+/* ヘッダーのサイトタイトルのpadding変更
+link-heightは？？？ */
+
+/*「display: inline-block;」でリンクを親要素の範囲に広げる
+※blockを指定すると横幅いっぱいまで広がってしまうため、
+inline-blockを設定している*/
+
+#header .site-title a {
+  display: inline-block;
+}
+/*なぜ？ */
+
+#navi {
+  background-color: #333;
+}
+/* ナヴィのカラー変更 */
+
+#navi a {
+  color: #fff;
+  font-size: large;
+}
+
+#navi ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+/* navi ulにフレックス
+並びは通常通り、縦を中心 */
+
+#navi li {
+  font-size: 0.875rem;
+  padding: 10px 60px 10px 0;
+}
+/* フォントサイズ変更
+脂肪を上下１０、右６０、左０ */
+
+/*-------------------------------------------
+pickup
+-------------------------------------------*/
+
+#pickup {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 150px;
+  margin-bottom: 60px;
+}
+/* flexで横並び、間開けて、上１５０、下６０ */
+
+#pickup article {
+  width: 32%;
+}
+
+/* 三つなので32% */
+
+#pickup .article-title {
+  font-size: 1rem;
+  margin: 10px 0 15px 0;
+}
+
+/* 文章の服指定 */
+
+/*-------------------------------------------
+container
+-------------------------------------------*/
+
+#container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+/* フレックスでmainとaside
+幅をbetween、margin-bottomでしたの服 */
+
+main {
+  width: 65%;
+}
+
+/* mainの幅 */
+
+main article {
+  margin-bottom: 80px;
+}
+
+/* 記事の下幅 */
+
+main .article-title {
+  font-size: 1.5rem;
+  margin: 10px 0 15px 0;
+}
+
+/* mainのタイトル */
+
+main ul {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+/* メインの日時、カテゴリの並び */
+
+main li {
+  font-size: 0.875rem;
+  margin-right: 20px;
+}
+/* フォントサイズと幅 */
+
+main .text {
+  padding: 10px 40px 30px 40px;
+}
+/* テキストの位置 */
+
+/*-------------------------------------------
+aside
+-------------------------------------------*/
+
+#sidebar {
+  width: 33%;
+  padding: 20px;
+}
+
+/* メイン65なのでサイド33
+paddingで脂肪 */
+
+#sidebar .side-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+/* フォントの太さ */
+
+.author {
+  text-align: center;
+  margin-bottom: 60px;
+}
+/* 写真を中心に
+した幅を60px */
+
+.author img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+/* 画像のサイズ、丸、した幅 */
+
+#author .profile {
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+/* 文章は左よせ */
+
+.rankng {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ranking article {
+  margin-bottom: 30px;
+}
+
+.ranking .article-title {
+  font-size: 0.875rem;
+  font-weight: normal;
+  text-align: left;
+}
+
+/* 文章は左よせ、フォントの太さはかえない？ */
+
+.archive {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* タイトルを中央に */
+
+.archive ul {
+  border-bottom: solid 1px #777;
+}
+
+.archive li {
+  font-size: 0.875rem;
+  border-top: solid 1px #777;
+  padding: 20px;
+  text-align: left;
+}
+
+/* 線、左よせ */
+
+/*-------------------------------------------
+footer
+-------------------------------------------*/
+
+#footer {
+  font-size: 0.875rem;
+  background-color: #f7f7f7;
+}
+
+/* フッターの文字サイズ、背景色 */
+
+#footer .content {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* 横並び、上下の幅 */
+
+#footer .item {
+  width: 30%;
+}
+/* 三つなので30％ */
+
+#footer .footer-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* フォントの幅 */
+
+#footer ul.about-list {
+  margin: 20px 0;
+}
+
+#footer ul.about-list li {
+  margin-bottom: 5px;
+}
+
+#footer ul.about-list .arrow {
+  position: relative;
+  display: inline-block;
+  padding-left: 12px;
+  color: #333;
+}
+
+/* 矢印？ */
+
+/*疑似要素で三角矢印を表示
+border～プロパティで三角を作り、positionで位置調整*/
+
+#footer ul.about-list .arrow::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 8px;
+  border-color: transparent transparent transparent #333;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -6px;
+}
+
+#footer .menu-list {
+  border-bottom: solid 1px #777;
+}
+
+/* 線 */
+
+#footer .menu-list > li {
+  border-top: solid 1px #777;
+  padding: 15px;
+  text-align: left;
+}
+
+/* 線、左よせ */
+
+#footer .copyright {
+  font-size: 00.75rem;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* スマホ767px*/
+
+@media screen and (max-width: 599px) {
+  /*-------------------------------------------
+header
+-------------------------------------------*/
+
+  #header .site-title {
+    padding: 20px 16px;
+  }
+
+  #navi {
+    overflow-x: scroll;
+  }
+  /* ナヴィに横スクロール */
+
+  /*-------------------------------------------
+pickup
+-------------------------------------------*/
+
+  #pickup {
+    flex-direction: column;
+    padding-top: 140px;
+  }
+  /* flexで横並び、間開けて、上１５０、下６０ */
+
+  #pickup article {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  /*-------------------------------------------
+  container
+  -------------------------------------------*/
+
+  #container {
+    flex-direction: column;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  /*-------------------------------------------
+  aside
+  -------------------------------------------*/
+
+  #sidebar {
+    width: 100%;
+    padding: 0px;
+  }
+
+  /*-------------------------------------------
+  footer
+  -------------------------------------------*/
+
+  #footer .content {
+    flex-direction: column;
+  }
+
+  /* 横並び、上下の幅 */
+
+  #footer .item {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  /* 三つなので30％ */
+}
